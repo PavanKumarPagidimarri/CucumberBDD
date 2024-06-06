@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class LoginPage {
 
-    private final WebDriver driver;
+    public  WebDriver driver;
 
     //By Locators
     private  By emailInputLocator = By.name("email");
@@ -17,7 +17,6 @@ public class LoginPage {
     private  By invalidUserAlertLocator = By.xpath("//div[contains(@class, 'alert')]");
     //Constructor-- to instantiate webdriver
     public LoginPage(WebDriver driver) {
-
         this.driver = driver;
     }
 
@@ -40,16 +39,16 @@ public class LoginPage {
 
     }
 
-    public boolean checkWarningAlert(){
-
-        boolean warningAlert = driver.findElement(warningMesageLocator).isDisplayed();
-        return warningAlert;
-    }
-
-    public boolean limitExceedWarningAlert(){
-        boolean limitExceedWarningAlert = driver.findElement(limitExceedlocator).isDisplayed();
-        return limitExceedWarningAlert;
-    }
+//    public boolean checkWarningAlert(){
+//
+//        boolean warningAlert = driver.findElement(warningMesageLocator).isDisplayed();
+//        return warningAlert;
+//    }
+//
+//    public boolean limitExceedWarningAlert(){
+//        boolean limitExceedWarningAlert = driver.findElement(limitExceedlocator).isDisplayed();
+//        return limitExceedWarningAlert;
+//    }
 
     public boolean checkinvalidUser(){
         boolean checkinvalidUser = driver.findElement(invalidUserAlertLocator).isEnabled();
