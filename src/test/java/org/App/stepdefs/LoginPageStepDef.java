@@ -74,7 +74,6 @@ public class LoginPageStepDef {
         }
 
     }
-
     //User Registration Flow
     //Registration Page Steps Starts here
     @Given("User is on OpenCart Register page")
@@ -82,7 +81,6 @@ public class LoginPageStepDef {
         driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/register");
         registerPage = new RegisterPage(driver);
     }
-
     @When("User enters firstname {string}")
     public void user_enters_firstname(String firstName) {
         registerPage.enterFirstName(firstName);
@@ -119,9 +117,7 @@ public class LoginPageStepDef {
     }
 
     @When("User clicks on continue button")
-    public void user_clicks_on_continue_button() throws InterruptedException {
-        registerPage.confirmToRegister();
-    }
+    public void user_clicks_on_continue_button() throws InterruptedException {registerPage.confirmToRegister();}
 
     @Then("Check whether account is created or not")
     public void check_registration() {
@@ -136,7 +132,6 @@ public class LoginPageStepDef {
                 System.out.println("Account created successfully.");
                 Assert.assertEquals(title, ExpTitle, "Not able to perform user registration");
             }
-
         }
     }
 }
