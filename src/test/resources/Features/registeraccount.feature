@@ -19,7 +19,7 @@ Feature: New user Registration
     Examples:
       | Firstname | Lastname | email              | TelephoneNumber | Password | PasswordConfirm |
             #1. Positive - Register with valid Data
-      | Dummy     | Dummy    | Dummy212@gmail.com | 39318918        | Password | Password        |
+      | Dummy     | Dummy    | Dummy213@gmail.com | 39318918        | Password | Password        |
 
             #2. Try to register by not giving FirstName
       |           | Dummy    | Dummy2000@gmail.com | 39318918        | Password | Password        |
@@ -41,10 +41,13 @@ Feature: New user Registration
 
 
            #8. Give Nothing and Try to register
-      |           |           |                    |                |           |                 |
+      |           |           |                    |                |           |                  |
 
-          #9.Try to register with existing email
-      | Dummy     | Dummy    | Dummy100@gmail.com | 39318918        | Password | Password        |
+           #9. Try to register by entering Password and confirm password are not same
+      | Dummy     |  Dummy    | Dummy2000@gmail.com | 39318918       | Password  | phs82           |
+
+          #10.Try to register with existing email
+      | Dummy     | Dummy    | Dummy100@gmail.com | 39318918        | Password |  Password          |
 
 
 
