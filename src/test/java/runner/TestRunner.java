@@ -9,12 +9,9 @@ import org.testng.annotations.DataProvider;
                  plugin = {"pretty", "html:target/cucumber-reports",  "json:target/cucumber.json"},
                  monochrome = true,
                  publish = true
-
-
 )
 //extend AbstractTestNGCucumberTests is using to run tests in parallel mode
 public class TestRunner extends AbstractTestNGCucumberTests {
-
     @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios(){

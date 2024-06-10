@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="CucumberBDD suite" verbose = "2" parallel="classes" thread-count ="5">
+<suite name="CucumberBDD suite" verbose = "2" parallel="classes" thread-count ="14">
     <test name="Login page Test">
         <classes>
             <class name="runner.TestRunner"/>

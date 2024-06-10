@@ -39,17 +39,6 @@ public class LoginPage {
 
     }
 
-//    public boolean checkWarningAlert(){
-//
-//        boolean warningAlert = driver.findElement(warningMesageLocator).isDisplayed();
-//        return warningAlert;
-//    }
-//
-//    public boolean limitExceedWarningAlert(){
-//        boolean limitExceedWarningAlert = driver.findElement(limitExceedlocator).isDisplayed();
-//        return limitExceedWarningAlert;
-//    }
-
     public boolean checkinvalidUser(){
         boolean checkinvalidUser = driver.findElement(invalidUserAlertLocator).isEnabled();
         String invalidUserAlertText = driver.findElement(invalidUserAlertLocator).getText();

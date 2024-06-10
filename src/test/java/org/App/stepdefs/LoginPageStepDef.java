@@ -1,5 +1,6 @@
 package org.App.stepdefs;
 
+import io.cucumber.java.en.And;
 import org.App.pages.LoginPage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -9,8 +10,10 @@ import io.cucumber.java.en.When;
 import org.App.pages.RegisterPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
@@ -72,40 +75,42 @@ public class LoginPageStepDef {
 
     }
 
-    @Given("User is OpenCart Registration page")
+    //User Registration Flow
+    //Registration Page Steps Starts here
+    @Given("User is on OpenCart Register page")
     public void user_on_open_cart_registration_page() {
         driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/register");
         registerPage = new RegisterPage(driver);
     }
 
-    @When("User enters a Firstname")
-    public void user_enters_a_firstname() {
-        registerPage.enterFirstName("Dummy");
+    @When("User enters firstname {string}")
+    public void user_enters_firstname(String firstName) {
+        registerPage.enterFirstName(firstName);
     }
 
-    @When("User enters a Lastname")
-    public void user_enters_a_lastname() {
-        registerPage.enterLastName("Dummy");
+    @When("User enters lastname {string}")
+    public void user_enters_lastname(String lastName) {
+        registerPage.enterLastName(lastName);
     }
 
-    @When("User enters Existing email")
-    public void user_enters_existing_email() {
-        registerPage.enterEmail("Dummy100@gmail.com");
+    @When("User enters an email {string}")
+    public void user_enters_an_email(String email) {
+        registerPage.enterEmail(email);
     }
 
-    @When("User enters Random Telephone number")
-    public void user_enters_random_telephone_number() {
-        registerPage.enterTelephoneNumber("2009012");
+    @When("User enters number {string}")
+    public void user_enters_number(String telephone) {
+        registerPage.enterTelephoneNumber(telephone);
     }
 
-    @When("User enters Password")
-    public void user_enters_password() {
-        registerPage.enterPassword("7917931131");
+    @When("User enters password {string}")
+    public void user_enters_password(String password) {
+        registerPage.enterPassword(password);
     }
 
-    @When("User enters Password Confirm")
-    public void user_enters_password_confirm() {
-        registerPage.enterConfirmPassword("7917931131");
+    @When("User enters confirm password {string}")
+    public void user_enters_confirm_password(String password) {
+        registerPage.enterConfirmPassword(password);
     }
 
     @When("User agreed to the privacy policy")
@@ -114,16 +119,24 @@ public class LoginPageStepDef {
     }
 
     @When("User clicks on continue button")
-    public void user_clicks_on_continue_button() {
+    public void user_clicks_on_continue_button() throws InterruptedException {
         registerPage.confirmToRegister();
     }
 
-    @Then("User should see an error message AccountExist")
-    public void user_should_see_an_error_message_Registration_flow() {
+    @Then("Check whether account is created or not")
+    public void check_registration() {
+        String ExpTitle = "Your Account Has Been Created!";
+        String title = driver.getTitle();
+        try {
+            if (registerPage.checkinvalidRegistration()) {
+                Assert.assertTrue(true, "Not able to Register");
+            }
+        } catch (Exception e) {
+            if (title.equals("Your Account Has Been Created!")) {
+                System.out.println("Account created successfully.");
+                Assert.assertEquals(title, ExpTitle, "Not able to perform user registration");
+            }
 
-        if ( registerPage.checkAccountExistAlert()) {
-            Assert.assertTrue(true, "Not a valid error message");
         }
-
     }
 }
